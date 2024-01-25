@@ -1,59 +1,56 @@
 public class Fraction{
-    public int num;
-    public int num2;
-    public int n;
-    public int n2;
-    public int ans;
+    int n;
+    int d;
     
     //constructor
-    public  Fraction(int num, int num2,int n,int n2,int ans){
-        this.num = num;
-        this.num2 = num2;
-        this.n=n;
-        this.n2=n2;
-        this.ans=ans;
+    public  Fraction(int numerator, int denominator){
+        n = numerator;
+        d = denominator;;
+    }
+    public static int gcd(int a, int b){
+        if(b==0){
+            return a;
+        }
+        else{
+            return gcd(b, a%b);
+        }
+    }
+    public static String reduce(int n, int d){
+        int gcd = gcd(n, d);
+        int newN = n/gcd;
+        int newD = d/gcd;
+        return newN + "/" + newD;
     }
 
     //methods
-    public int add(){
-        ans = (num/num2) + (n/n2);
-        return ans;
+    public String toString(){
+        return n + "/" + d;
     }
 
-    public int substract(){
-        ans = (num/num2) - (n/n2);
-        return ans;
+    public String add(Fraction f){
+        int newN = this.n * f.d + f.n * this.d;
+        int newD = this.d * f.d;
+        String answer = reduce(newN,newD);
+        return answer;
     }
 
-    public int multiply(){
-        ans = (num/num2) * (n/n2);
-        return ans;
+    public String substract(Fraction f){
+        int newN = this.n * f.d - f.n * this.d;
+        int newD = this.d * f.d;
+        String answer = reduce(newN,newD);
+        return answer;
     }
 
-    public int divide(){
-        ans = (num/num2) / (n/n2);
-        return ans;
+    public String multiply(Fraction f){
+        int newN = this.n * f.d;
+        int newD = this.d * f.d;
+        String answer = reduce(newN,newD);
+        return answer;
     }
 
-    public int reduce(){
-        //odd number
-        if(num/2 != 0 || num2/2 != 0 || n/2 != 0 || n2/2 != 0){
-            
-        }
-
-        //even number
-        else if(num/2 == 0 || num2/2 == 0 || n/2 == 0 || n2/2 == 0){
-
-        }
-
-    return ans;
+    public String divide(Fraction f){
+        int newN = this.n * f.d;
+        int newD = this.d * f.n;
+        return newN + "/" + newD;
     }
-
-    // public void printFraction1(int num, int num2){
-    //     System.out.print(num + "/" + num2);
-    // }
-
-    // public void printFraction2(int n, int n2){
-    //     System.out.print(n + "/" + n2);
-    // }
 }
