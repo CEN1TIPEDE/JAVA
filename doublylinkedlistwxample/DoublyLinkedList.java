@@ -76,9 +76,9 @@ public class DoublyLinkedList {
         return oldestMan;
     }
     public void swapHeadandTail(){//swap person info while list of node remain the same
-        Person temp = head.pinfo;
-        head.pinfo = tail.pinfo;
-        tail.pinfo = temp;
+        Person temp = head.pinfo;//keep head
+        head.pinfo = tail.pinfo;//swap head and tail
+        tail.pinfo = temp;//change tail to head(temp)
     }
     public void swapHeadandTaiMovingPointer(){//move node while info is still the same
         if(head != tail){
